@@ -9,29 +9,36 @@ const PHRASES = [
     "Tinkering with Raspberry Pi and retro hardware.",
 ];
 
+// Toast notification
+let toastTimeout = null;
+function showToast(message, duration = 2200) {
+    let toast = document.getElementById("toast");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        toast.setAttribute("role", "status");
+        toast.setAttribute("aria-live", "polite");
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.remove("toast-hide");
+    toast.classList.add("toast-show");
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        toast.classList.replace("toast-show", "toast-hide");
+    }, duration);
+}
+
 // Personal + professional facts widget
 const FACTS = [
-    // Personal highlights
     "Pulled a classmate to safety from a cliff edge during a trek — kept calm under pressure and led the immediate response.",
     "Finished Re:Zero (3 seasons) in just three days — peak focus mode unlocked.",
     "Traveled across Japan recently, exploring Tokyo, Himeji, and Hiroshima.",
-    "I follow a One Meal A Day (OMAD) routine.",
+    "Follows a One Meal A Day (OMAD) routine — discipline on and off the keyboard.",
     "Completed the TCS World Majja Run 4.2K in Bengaluru.",
     "Peak Valorant rank: Diamond 3 (Reyna main).",
-    "Comfort-first wardrobe enthusiast — modal and bamboo fabrics all day.",
-
-    // Professional spotlights
-    "Migrated CI from CircleCI to GitHub Actions with reusable workflows and caching — faster, more reliable pipelines.",
-    "Enjoy designing clean APIs and shipping resilient services in Python (Django/Flask/FastAPI).",
-    "Scaled background jobs with Celery + RabbitMQ to millions of tasks per month.",
-    "Introduced SLOs/SLIs, on-call runbooks, and actionable alerts — faster MTTR.",
-    "Zero‑downtime database migrations and blue‑green deploys for safe releases.",
-    "Partitioned data and tuned indexes to keep p95/p99 predictable at scale.",
-    "Cut cloud costs ~30% via right‑sizing, autoscaling, and storage lifecycle policies.",
-    "Implemented least‑privilege IAM and centralized secret management.",
-    "Built developer CLIs and templates to speed service scaffolding and diagnostics.",
-    "Mentored junior engineers; raised test coverage and code review quality.",
-    "Added observability — metrics, structured logs, and traces for rapid troubleshooting."
+    "Has been tinkering with Raspberry Pi projects since university — hardware meets software.",
+    "Believes the best bug fix is the one that also ships a test proving it can never come back.",
 ];
 let lastFactIdx = -1;
 function nextFact() {
@@ -86,8 +93,10 @@ function initTheme() {
     setTheme(getInitialTheme());
     const btn = document.getElementById("theme-btn");
     if (btn) btn.addEventListener("click", toggleTheme);
-    // Optional: keyboard shortcut "t" to toggle theme
+    // Keyboard shortcut "t" to toggle theme (skip when typing in inputs)
     document.addEventListener("keydown", (e) => {
+        const tag = document.activeElement?.tagName;
+        if (tag === "INPUT" || tag === "TEXTAREA" || document.activeElement?.isContentEditable) return;
         if ((e.key === "t" || e.key === "T") && !e.altKey && !e.ctrlKey && !e.metaKey) {
             toggleTheme();
         }
@@ -97,23 +106,18 @@ function initTheme() {
 function initEmailCopy() {
     const emailLink = document.getElementById("email-link");
     if (!emailLink) return;
-    emailLink.addEventListener("contextmenu", (e) => e.preventDefault());
-    // Add a click+modifier to copy to clipboard without opening mail client
+    // Click copies email to clipboard; falls back to mailto if clipboard unavailable
     emailLink.addEventListener("click", (e) => {
-        if (e.shiftKey) {
-            e.preventDefault();
-            copyEmail();
+        e.preventDefault();
+        if (!navigator.clipboard) {
+            window.location.href = `mailto:${EMAIL}`;
+            return;
         }
-    });
-}
-
-function copyEmail() {
-    if (!navigator.clipboard) {
-        window.alert(EMAIL);
-        return;
-    }
-    navigator.clipboard.writeText(EMAIL).then(() => {
-        alert("Email copied to clipboard!");
+        navigator.clipboard.writeText(EMAIL).then(() => {
+            showToast(`Copied: ${EMAIL}`);
+        }).catch(() => {
+            window.location.href = `mailto:${EMAIL}`;
+        });
     });
 }
 
