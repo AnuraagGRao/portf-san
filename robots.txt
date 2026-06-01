@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Add your site URL once deployed to enable sitemap crawling
+# Sitemap: https://example.com/sitemap.xml

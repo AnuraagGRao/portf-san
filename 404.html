@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Anuraag Gopinath Rao</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <button class="theme-toggle" id="theme-btn" aria-label="Toggle color theme" title="Toggle color theme">☀️</button>
+  <div class="container">
+    <header>
+      <div class="terminal-header">anuraag@bengaluru:~$ cat 404.txt</div>
+      <h1>404 <span>Not Found</span></h1>
+      <p class="tagline">The page you're looking for isn't here.</p>
+    </header>
+    <section>
+      <div class="project-card">
+        <h3>Let's get you back.</h3>
+        <p class="job-desc">Return to the homepage and continue exploring.</p>
+        <div style="margin-top:1rem">
+          <a href="/" class="skill-pill">Go Home</a>
+        </div>
+      </div>
+    </section>
+    <footer>Building robust systems in Bengaluru, India.</footer>
+  </div>
+  <script src="assets/js/main.js" defer></script>
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme')||'dark');</script>
+</body>
+</html>
