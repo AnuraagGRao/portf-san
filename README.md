@@ -1,5 +1,7 @@
 # Portfolio Website
 
+[![Deploy](https://github.com/AnuraagGRao/portf-san/actions/workflows/pages.yml/badge.svg?branch=master)](https://github.com/AnuraagGRao/portf-san/actions/workflows/pages.yml)
+
 Simple, fast, and maintainable personal site for Anuraag Gopinath Rao.
 
 ## Structure
@@ -41,12 +43,26 @@ http://localhost:5173/
 - Theme preference persists in `localStorage`.
 - Shortcut: press `t` to toggle theme.
 
-## Deploy (GitHub Pages)
+## Deploy (GitHub Pages via Actions)
 
-1. Initialize git and push to GitHub.
-2. In the repo settings, enable GitHub Pages with the `main` branch and `/root`.
-3. Add a custom domain (optional) and create a `CNAME` file if using one.
-4. Commit `404.html` so deep links resolve.
+This repo ships with a ready-to-use GitHub Actions workflow: `.github/workflows/pages.yml`.
+
+- Live URL (after first deploy): https://anuraaggrao.github.io/portf-san/
+- Workflow runs on push to `main` or `master`, and supports manual triggers.
+
+Steps:
+1. Push the repo to GitHub (if not already):
+	```bash
+	git add .
+	git commit -m "ci: deploy static site to GitHub Pages"
+	git push
+	```
+2. In GitHub → Settings → Pages → Build and deployment → Source, select "GitHub Actions".
+3. The workflow will upload the static site as a Pages artifact and deploy it.
+
+Troubleshooting:
+- Check runs here: https://github.com/AnuraagGRao/portf-san/actions/workflows/pages.yml
+- Project Pages serve under a subpath (`/portf-san/`); all asset links are relative in this repo and work out-of-the-box.
 
 ## Formatting
 
