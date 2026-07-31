@@ -31,6 +31,71 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Animated background gradient */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(
+        ellipse 80% 60% at 20% 10%,
+        rgba(88, 166, 255, 0.08) 0%,
+        transparent 60%
+    ),
+    radial-gradient(
+        ellipse 60% 50% at 80% 80%,
+        rgba(46, 160, 67, 0.06) 0%,
+        transparent 55%
+    );
+    opacity: 0.5;
+    animation: gradientShift 15s ease infinite;
+    background-size: 200% 200%;
+    pointer-events: none;
+}
+
+/* Scroll reveal animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll reveal animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+}
+
+.fade-in-visible {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0s; }
+.fade-in:nth-child(2) { animation-delay: 0.1s; }
+.fade-in:nth-child(3) { animation-delay: 0.2s; }
+.fade-in:nth-child(4) { animation-delay: 0.3s; }
+
 .container { max-width: 700px; margin: 0 auto; }
 
 /* Header & Terminal Setup */
@@ -47,8 +112,19 @@ h1 {
     font-weight: 600;
     margin-bottom: 0.5rem;
     letter-spacing: -1px;
+    background: linear-gradient(
+        135deg,
+        var(--text-main) 0%,
+        var(--accent-blue) 50%,
+        var(--accent-green) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 8s ease infinite;
 }
-h1 span { color: var(--accent-blue); }
+h1 span { color: inherit; }
 
 .tagline {
     font-size: 1.1rem;
@@ -194,10 +270,13 @@ h2 {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     position: relative;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 .project-card:hover, .project-card:focus-within {
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.01);
+    border-color: var(--accent-blue);
+    box-shadow: 0 8px 24px rgba(88, 166, 255, 0.15);
+}
     border-color: var(--accent-green);
 }
 .project-card h3 { color: var(--accent-green); margin-bottom: 0.5rem; }
