@@ -1,81 +1,673 @@
-/* Base theme tokens */
+/* ==========================================================================
+   Portfolio — Facet-inspired design system
+   Visual language drawn from tanishk.ai / Facet design tokens.
+   ========================================================================== */
+
+/* ----- Web fonts ----- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Nunito+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;800&display=swap');
+
+/* ==========================================================================
+   1. TOKENS — every design decision as a CSS variable
+   ========================================================================== */
+
 :root {
-    --bg-color: #0d1117;
-    --card-bg: #161b22;
-    --text-main: #c9d1d9;
-    --text-muted: #8b949e;
-    --accent-green: #2ea043;
-    --accent-blue: #58a6ff;
-    --accent-yellow: #e3b341;
-    --border-color: #30363d;
+    /* --- Color: the dark palette (default) --- */
+    --background: #0F1011;
+    --surface: #141516;
+    --surface-hover: #18191A;
+    --surface-active: #1E2022;
+    --border-subtle: #202123;
+    --border: #2C2E31;
+    --border-strong: #4C5155;
+    --text: #ECEDEE;
+    --text-muted: #889096;
+    --text-subtle: #63676B;
+
+    /* --- Accent ranks --- */
+    --accent-1: #ECEDEE;          /* TOP: headings, primary CTA */
+    --accent-2: #202425;          /* MIDDLE: support fills */
+    --accent-3: #ECEDEE;          /* BASE: focus rings, eyebrows */
+
+    /* Tints derived from accents */
+    --accent-1-tint: color-mix(in srgb, var(--accent-1) 12%, var(--surface));
+    --accent-3-tint: color-mix(in srgb, var(--accent-3) 14%, var(--surface));
+
+    /* --- Vivid palette (decoration only) --- */
+    --color-green: #34C759;
+    --color-blue: #58a6ff;
+    --color-yellow: #e3b341;
+
+    /* --- Typography --- */
+    --font-heading: "Cormorant", Georgia, "Times New Roman", serif;
+    --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    --text-display: clamp(2.5rem, 6vw, 3.5rem);
+    --text-h1: clamp(1.875rem, 4vw, 2.25rem);
+    --text-h2: 0.8rem;
+    --text-h3: 1.15rem;
+    --text-body: 0.95rem;
+    --text-caption: 0.75rem;
+    --text-footnote: 0.85rem;
+
+    --weight-body: 400;
+    --weight-medium: 500;
+    --weight-strong: 600;
+    --weight-heading: 600;
+    --weight-eyebrow: 800;
+
+    --leading-heading: 1.15;
+    --leading-body: 1.65;
+    --leading-ui: 1.4;
+
+    --tracking-heading: -0.02em;
+    --tracking-body: 0em;
+    --tracking-wide: 0.14em;
+
+    /* --- Spacing --- */
+    --space-tight: 0.25rem;
+    --space-control: 0.5rem;
+    --space-inline: 0.75rem;
+    --space-stack: 1rem;
+    --space-card: 1.5rem;
+    --space-page: 2rem;
+    --space-section: 3rem;
+    --space-hero: 4rem;
+
+    /* --- Shape --- */
+    --radius-control: 8px;
+    --radius-panel: 12px;
+    --radius-card: 16px;
+    --radius-pill: 999px;
+
+    --border-element: 1px;
+
+    /* --- Elevation --- */
+    --shadow-flat: none;
+    --shadow-raised:
+        inset 0 1px 0 rgb(255 255 255 / 0.04),
+        0 1px 2px rgb(0 0 0 / 0.40);
+    --shadow-floating:
+        inset 0 1px 0 rgb(255 255 255 / 0.05),
+        0 4px 12px rgb(0 0 0 / 0.50);
+
+    /* --- Motion --- */
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --ease-out: cubic-bezier(0.2, 0, 0, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-[data-theme="light"] {
-    --bg-color: #f6f8fa;
-    --card-bg: #ffffff;
-    --text-main: #24292f;
-    --text-muted: #57606a;
-    --border-color: #d0d7de;
+/* --- Light mode --- */
+[data-mode="light"] {
+    --background: #FBFCFD;
+    --surface: #FFFFFF;
+    --surface-hover: #F8F9FA;
+    --surface-active: #F1F3F5;
+    --border-subtle: #ECEEF0;
+    --border: #DFE3E6;
+    --border-strong: #C1C8CD;
+    --text: #11181C;
+    --text-muted: #687076;
+    --text-subtle: #889199;
+
+    --accent-1: #11181C;
+    --accent-2: #F1F3F5;
+    --accent-3: #11181C;
+
+    --color-green: #187C3D;
+    --color-blue: #295FA6;
+    --color-yellow: #8A5A00;
+
+    --shadow-raised:
+        0 1px 2px rgb(16 24 40 / 0.04),
+        0 1px 3px rgb(16 24 40 / 0.06);
+    --shadow-floating:
+        0 2px 4px rgb(16 24 40 / 0.05),
+        0 4px 8px rgb(16 24 40 / 0.06);
 }
 
-/* Reset and base */
-* { box-sizing: border-box; }
+
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    line-height: 1.6;
-    padding: 2rem;
-    transition: background-color 0.3s, color 0.3s;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    background-color: var(--background);
+    color: var(--text);
+    line-height: var(--leading-body);
+    padding: var(--space-page);
+    transition: background-color var(--duration-normal) var(--ease-out),
+                color var(--duration-normal) var(--ease-out);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animated background gradient */
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
+/* Subtle animated ambient glow — restrained, organic */
 body::before {
     content: '';
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: radial-gradient(
-        ellipse 80% 60% at 20% 10%,
-        rgba(88, 166, 255, 0.08) 0%,
-        transparent 60%
-    ),
-    radial-gradient(
-        ellipse 60% 50% at 80% 80%,
-        rgba(46, 160, 67, 0.06) 0%,
-        transparent 55%
-    );
-    opacity: 0.5;
-    animation: gradientShift 15s ease infinite;
+    background:
+        radial-gradient(ellipse 70% 50% at 15% 5%, rgba(88, 166, 255, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 85%, rgba(52, 199, 89, 0.03) 0%, transparent 55%);
+    opacity: 0.6;
+    animation: ambientShift 20s ease infinite;
     background-size: 200% 200%;
     pointer-events: none;
 }
 
-/* Scroll reveal animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+@keyframes ambientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* ==========================================================================
+   3. LAYOUT
+   ========================================================================== */
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   4. HEADER & HERO
+   ========================================================================== */
+
+header {
+    margin-bottom: var(--space-hero);
+    padding-top: var(--space-section);
+}
+
+.terminal-header {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-eyebrow);
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-stack);
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    font-weight: var(--weight-heading);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    color: var(--text);
+    margin: 0 0 var(--space-control) 0;
+}
+
+h1 span {
+    color: var(--text-muted);
+}
+
+.tagline {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-card);
+    line-height: var(--leading-body);
+}
+
+
+/* ==========================================================================
+   5. TYPEWRITER
+   ========================================================================== */
+
+.typewriter {
+    font-family: var(--font-mono);
+    font-size: var(--text-footnote);
+    color: var(--color-green);
+    min-height: 1.5em;
+    margin-bottom: var(--space-card);
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background-color: var(--color-green);
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+
+/* ==========================================================================
+   6. HEADER LINKS
+   ========================================================================== */
+
+.links {
+    display: flex;
+    gap: var(--space-inline);
+    flex-wrap: wrap;
+}
+
+.links a {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: var(--border-element) solid var(--border);
+    padding: var(--space-control) var(--space-stack);
+    border-radius: var(--radius-control);
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.links a:hover,
+.links a:focus-visible {
+    outline: none;
+    color: var(--text);
+    border-color: var(--border-strong);
+    background-color: var(--surface-hover);
+    box-shadow: var(--shadow-raised);
+}
+
+
+/* ==========================================================================
+   7. SECTIONS — numbered eyebrow headers (tanishk.ai style)
+   ========================================================================== */
+
+section {
+    margin-bottom: var(--space-hero);
+}
+
+h2 {
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--text-subtle);
+    margin: 0 0 var(--space-card) 0;
+    padding-bottom: var(--space-control);
+    border-bottom: var(--border-element) solid var(--border-subtle);
+}
+
+/* Section subheading — when present below the eyebrow */
+.section-subtitle {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: var(--weight-heading);
+    color: var(--text);
+    margin: calc(-1 * var(--space-inline)) 0 var(--space-card) 0;
+    letter-spacing: var(--tracking-heading);
+}
+
+
+/* ==========================================================================
+   8. EXPERIENCE CARDS
+   ========================================================================== */
+
+.job {
+    margin-bottom: var(--space-stack);
+    padding: var(--space-card);
+    background: var(--surface);
+    border: var(--border-element) solid var(--border);
+    border-radius: var(--radius-card);
+    transition: border-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.job:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-raised);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-control);
+    gap: var(--space-inline);
+}
+
+.job-header .left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-inline);
+    min-width: 0;
+}
+
+.company-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-control);
+    border: var(--border-element) solid var(--border-subtle);
+    background: var(--surface);
+    flex-shrink: 0;
+}
+
+.job-title {
+    font-family: var(--font-body);
+    font-weight: var(--weight-strong);
+    font-size: var(--text-h3);
+    color: var(--text);
+    line-height: var(--leading-ui);
+}
+
+.job-company {
+    color: var(--text-muted);
+    font-weight: var(--weight-medium);
+}
+
+.job-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-control);
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    color: var(--text-subtle);
+    white-space: nowrap;
+}
+
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-medium);
+    color: var(--color-green);
+    border: var(--border-element) solid color-mix(in srgb, var(--color-green) 40%, transparent);
+    background: color-mix(in srgb, var(--color-green) 10%, transparent);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+}
+
+.live-badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-green);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-green) 70%, transparent);
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-green) 70%, transparent); }
+    70%  { box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-green) 0%, transparent); }
+    100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-green) 0%, transparent); }
+}
+
+.job-desc {
+    font-size: var(--text-body);
+    color: var(--text-muted);
+    line-height: var(--leading-body);
+}
+
+.job-bullets {
+    margin: var(--space-control) 0 0 var(--space-stack);
+    padding: 0;
+    list-style: none;
+    color: var(--text-muted);
+    font-size: var(--text-body);
+}
+
+.job-bullets li {
+    margin-bottom: var(--space-control);
+    padding-left: var(--space-stack);
+    position: relative;
+    line-height: var(--leading-body);
+}
+
+.job-bullets li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--text-subtle);
+}
+
+
+/* ==========================================================================
+   9. SKILLS
+   ========================================================================== */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-control);
+}
+
+.skill-pill {
+    background: var(--surface);
+    border: var(--border-element) solid var(--border);
+    padding: var(--space-tight) var(--space-inline);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-medium);
+    color: var(--text-muted);
+    transition: all var(--duration-fast) var(--ease-out);
+    text-decoration: none;
+}
+
+.skill-pill:hover {
+    color: var(--text);
+    border-color: var(--border-strong);
+    background: var(--surface-hover);
+}
+
+
+/* ==========================================================================
+   10. PROJECTS
+   ========================================================================== */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-stack);
+}
+
+@media (min-width: 500px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Scroll reveal animations */
+.project-card,
+.widget-card {
+    padding: var(--space-card);
+    background: var(--surface);
+    border: var(--border-element) solid var(--border);
+    border-radius: var(--radius-card);
+    position: relative;
+    transition: transform var(--duration-normal) var(--ease-spring),
+                border-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-floating);
+}
+
+.project-card h3 {
+    font-family: var(--font-body);
+    font-weight: var(--weight-strong);
+    font-size: var(--text-h3);
+    color: var(--text);
+    margin: 0 0 var(--space-control) 0;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: var(--space-inline);
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-medium);
+    color: var(--text-muted);
+    text-decoration: none;
+    border: var(--border-element) solid var(--border);
+    padding: var(--space-tight) var(--space-inline);
+    border-radius: var(--radius-control);
+    transition: all var(--duration-fast) var(--ease-out);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+    color: var(--text);
+    border-color: var(--border-strong);
+    background: var(--surface-hover);
+    outline: none;
+}
+
+
+/* ==========================================================================
+   11. WIDGET (Did You Know?)
+   ========================================================================== */
+
+.widget-card {
+    border-color: var(--border);
+}
+
+.widget-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-raised);
+}
+
+.widget-refresh {
+    position: absolute;
+    top: var(--space-card);
+    right: var(--space-card);
+    background: none;
+    border: none;
+    color: var(--text-subtle);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color var(--duration-fast) var(--ease-out);
+    padding: 0;
+}
+
+.widget-refresh:hover {
+    color: var(--text);
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+.spinning { animation: spin 0.4s linear; }
+
+
+/* ==========================================================================
+   12. THEME TOGGLE
+   ========================================================================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--surface);
+    border: var(--border-element) solid var(--border);
+    color: var(--text);
+    padding: var(--space-control);
+    border-radius: var(--radius-control);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all var(--duration-fast) var(--ease-out);
+    box-shadow: var(--shadow-raised);
+}
+
+.theme-toggle:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-hover);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--accent-3);
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   13. FOOTER
+   ========================================================================== */
+
+footer {
+    margin-top: var(--space-hero);
+    padding-top: var(--space-card);
+    border-top: var(--border-element) solid var(--border-subtle);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    font-weight: var(--weight-medium);
+    color: var(--text-subtle);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   14. TOAST NOTIFICATION
+   ========================================================================== */
+
+#toast {
+    position: fixed;
+    bottom: var(--space-card);
+    left: 50%;
+    transform: translateX(-50%) translateY(0.5rem);
+    background: var(--surface);
+    color: var(--text);
+    border: var(--border-element) solid var(--border-strong);
+    padding: var(--space-control) var(--space-card);
+    border-radius: var(--radius-control);
+    font-family: var(--font-mono);
+    font-size: var(--text-caption);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+    z-index: 1000;
+    white-space: nowrap;
+    max-width: 90vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: var(--shadow-floating);
+}
+
+#toast.toast-show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+#toast.toast-hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0.5rem);
+}
+
+
+/* ==========================================================================
+   15. SCROLL REVEAL
+   ========================================================================== */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(24px);
     }
     to {
         opacity: 1;
@@ -88,329 +680,75 @@ body::before {
 }
 
 .fade-in-visible {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.5s var(--ease-out) forwards;
 }
 
 .fade-in:nth-child(1) { animation-delay: 0s; }
-.fade-in:nth-child(2) { animation-delay: 0.1s; }
-.fade-in:nth-child(3) { animation-delay: 0.2s; }
-.fade-in:nth-child(4) { animation-delay: 0.3s; }
+.fade-in:nth-child(2) { animation-delay: 0.08s; }
+.fade-in:nth-child(3) { animation-delay: 0.16s; }
+.fade-in:nth-child(4) { animation-delay: 0.24s; }
+.fade-in:nth-child(5) { animation-delay: 0.32s; }
+.fade-in:nth-child(6) { animation-delay: 0.40s; }
+.fade-in:nth-child(7) { animation-delay: 0.48s; }
+.fade-in:nth-child(8) { animation-delay: 0.56s; }
 
-.container { max-width: 700px; margin: 0 auto; }
 
-/* Header & Terminal Setup */
-header { margin-bottom: 3rem; }
-.terminal-header {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-}
+/* ==========================================================================
+   16. ACCESSIBILITY
+   ========================================================================== */
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    letter-spacing: -1px;
-    background: linear-gradient(
-        135deg,
-        var(--text-main) 0%,
-        var(--accent-blue) 50%,
-        var(--accent-green) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 8s ease infinite;
-}
-h1 span { color: inherit; }
-
-.tagline {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-}
-
-/* Typewriter */
-.typewriter {
-    font-family: 'Fira Code', monospace;
-    color: var(--accent-green);
-    min-height: 1.5em;
-    margin-bottom: 1.5rem;
-}
-.cursor {
-    display: inline-block;
-    width: 8px;
-    height: 1em;
-    background-color: var(--accent-green);
-    vertical-align: text-bottom;
-    animation: blink 1s step-end infinite;
-}
-@keyframes blink { 50% { opacity: 0; } }
-
-/* Links */
-.links { display: flex; gap: 1rem; flex-wrap: wrap; }
-.links a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    border: 1px solid var(--border-color);
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    transition: all 0.2s;
-}
-.links a:hover, .links a:focus-visible {
-    outline: none;
-    border-color: var(--accent-blue);
-    color: var(--accent-blue);
-    background-color: rgba(88, 166, 255, 0.1);
-}
-
-/* Sections */
-section { margin-bottom: 3rem; }
-h2 {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.5rem;
-}
-
-/* Experience */
-.job {
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    border-left: 4px solid var(--accent-yellow);
-}
-.job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.5rem;
-}
-.job-title { font-weight: 600; font-size: 1.1rem; }
-.job-company { color: var(--accent-blue); font-weight: 500; }
-.job-desc { font-size: 0.95rem; color: var(--text-muted); }
-
-/* Job extras */
-.job-header .left {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-.company-logo {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    background: var(--card-bg);
-}
-.job-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.live-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.7rem;
-    color: var(--accent-green);
-    border: 1px solid rgba(46,160,67,0.5);
-    background: rgba(46,160,67,0.1);
-    padding: 0.15rem 0.5rem;
-    border-radius: 999px;
-}
-.live-badge::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent-green);
-    box-shadow: 0 0 0 0 rgba(46,160,67, 0.7);
-    animation: pulse 1.8s infinite;
-}
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(46,160,67,0.7); }
-  70% { box-shadow: 0 0 0 8px rgba(46,160,67,0); }
-  100% { box-shadow: 0 0 0 0 rgba(46,160,67,0); }
-}
-
-.job-bullets {
-    margin: 0.5rem 0 0 1rem;
-    color: var(--text-muted);
-}
-.job-bullets li { margin-bottom: 0.35rem; }
-
-/* Skills */
-.skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.skill-pill {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-family: 'Fira Code', monospace;
-    color: var(--text-main);
-}
-
-/* Projects */
-.project-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-.project-card, .widget-card { 
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    position: relative;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-}
-.project-card:hover, .project-card:focus-within {
-    transform: translateY(-4px) scale(1.01);
-    border-color: var(--accent-blue);
-    box-shadow: 0 8px 24px rgba(88, 166, 255, 0.15);
-}
-    border-color: var(--accent-green);
-}
-.project-card h3 { color: var(--accent-green); margin-bottom: 0.5rem; }
-.project-link {
-    display: inline-block;
-    margin-top: 0.75rem;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.82rem;
-    color: var(--accent-green);
-    text-decoration: none;
-    border: 1px solid rgba(46,160,67,0.4);
-    padding: 0.25rem 0.65rem;
-    border-radius: 6px;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-.project-link:hover, .project-link:focus-visible {
-    background-color: rgba(46,160,67,0.12);
-    border-color: var(--accent-green);
-    outline: none;
-}
-
-/* Widgets */
-.widget-card { border-color: var(--accent-blue); }
-.widget-refresh {
-    position: absolute;
-    top: 1.2rem; right: 1.2rem;
-    background: none; border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: color 0.2s;
-}
-.widget-refresh:hover { color: var(--accent-blue); }
-@keyframes spin { 100% { transform: rotate(360deg); } }
-.spinning { animation: spin 0.4s linear; }
-
-/* Theme Toggle */
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 0.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-.theme-toggle:focus-visible {
-    outline: 2px solid var(--accent-blue);
-    outline-offset: 2px;
-}
-
-footer {
-    margin-top: 4rem;
-    text-align: center;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-/* Toast notification */
-#toast {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(0.5rem);
-    background: var(--card-bg);
-    color: var(--text-main);
-    border: 1px solid var(--accent-blue);
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.82rem;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    z-index: 1000;
-    white-space: nowrap;
-    max-width: 90vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-#toast.toast-show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-#toast.toast-hide {
-    opacity: 0;
-    transform: translateX(-50%) translateY(0.5rem);
-}
-
-/* Motion preferences */
 @media (prefers-reduced-motion: reduce) {
-    .cursor { animation: none; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
-/* Mobile responsiveness */
+
+/* ==========================================================================
+   17. RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 600px) {
     body {
-        padding: 1rem;
+        padding: var(--space-stack);
+    }
+
+    header {
+        padding-top: var(--space-card);
     }
 
     h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .tagline {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .terminal-header {
-        font-size: 0.78rem;
+        font-size: 0.65rem;
         word-break: break-all;
     }
 
     .links {
-        gap: 0.5rem;
+        gap: var(--space-control);
     }
 
     .links a {
-        font-size: 0.8rem;
-        padding: 0.35rem 0.65rem;
+        font-size: 0.68rem;
+        padding: var(--space-tight) var(--space-control);
     }
 
     .job-header {
         flex-direction: column;
-        gap: 0.4rem;
+        gap: var(--space-tight);
         align-items: flex-start;
     }
 
     .job-meta {
-        font-size: 0.82rem;
+        font-size: 0.65rem;
     }
 
     .job-title {
@@ -419,36 +757,44 @@ footer {
 
     .project-card,
     .widget-card {
-        padding: 1rem;
+        padding: var(--space-stack);
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
     }
 
     .theme-toggle {
         top: 12px;
         right: 12px;
-        padding: 0.4rem;
+        padding: var(--space-tight);
         font-size: 0.9rem;
     }
 
     h2 {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
 
     .skill-pill {
-        font-size: 0.8rem;
-        padding: 0.25rem 0.65rem;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    section {
+        margin-bottom: var(--space-section);
     }
 
     footer {
-        margin-top: 2.5rem;
+        margin-top: var(--space-section);
     }
 }
 
 @media (max-width: 400px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .links a {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
 }

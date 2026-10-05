@@ -63,34 +63,35 @@ function nextFact() {
     textEl.textContent = FACTS[idx];
 }
 
-function setTheme(theme) {
+// Theme system — now uses data-mode="dark" / data-mode="light" (Facet convention)
+function setTheme(mode) {
     const html = document.documentElement;
     const btn = document.getElementById("theme-btn");
-    html.setAttribute("data-theme", theme);
+    html.setAttribute("data-mode", mode);
     if (btn) {
-        const isDark = theme === "dark";
+        const isDark = mode === "dark";
         btn.textContent = isDark ? "☀️" : "🌙";
-        btn.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
-        btn.setAttribute("title", isDark ? "Switch to light theme" : "Switch to dark theme");
+        btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        btn.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
     }
 }
 
-function getInitialTheme() {
-    const stored = localStorage.getItem("theme");
+function getInitialMode() {
+    const stored = localStorage.getItem("theme-mode");
     if (stored === "dark" || stored === "light") return stored;
     const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
     return prefersDark ? "dark" : "light";
 }
 
 function toggleTheme() {
-    const current = document.documentElement.getAttribute("data-theme") || getInitialTheme();
+    const current = document.documentElement.getAttribute("data-mode") || getInitialMode();
     const next = current === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", next);
+    localStorage.setItem("theme-mode", next);
     setTheme(next);
 }
 
 function initTheme() {
-    setTheme(getInitialTheme());
+    setTheme(getInitialMode());
     const btn = document.getElementById("theme-btn");
     if (btn) btn.addEventListener("click", toggleTheme);
     // Keyboard shortcut "t" to toggle theme (skip when typing in inputs)
