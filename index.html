@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" data-mode="dark">
+
 <head>
     <meta charset="UTF-8">
-    <title>Anuraag G Rao | Software Engineer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Software Engineer based in Bengaluru. Building scalable backend systems with Python, Django, and cloud infrastructure.">
-    <meta name="theme-color" content="#0F1011">
+    <title>Anuraag G Rao | Software Engineer & Systems Architect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description"
+        content="Software Engineer based in Bengaluru. Building scalable backend systems, high-throughput IoT pipelines, and intelligent AI agents.">
+    <meta name="theme-color" content="#090A0F">
 
     <!-- Open Graph / Twitter Cards -->
-    <meta property="og:title" content="Anuraag G Rao | Software Engineer">
-    <meta property="og:description" content="Software Engineer based in Bengaluru. Building scalable backend systems with Python, Django, and cloud infrastructure.">
+    <meta property="og:title" content="Anuraag G Rao | Software Engineer & Systems Architect">
+    <meta property="og:description"
+        content="Software Engineer based in Bengaluru. Building scalable backend systems, IoT telemetry pipelines with TimescaleDB, and AI agents.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/favicon.svg">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Canonical (update to your domain when set) -->
-    <link rel="canonical" href="https://example.com/">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://anuraaggrao.com/">
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+        rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -30,7 +40,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Anuraag G Rao",
-      "jobTitle": "Backend Developer",
+      "jobTitle": "Software Engineer & Backend Architect",
       "url": "https://anuraaggrao.com/",
       "sameAs": [
         "https://github.com/AnuraagGRao",
@@ -45,225 +55,805 @@
     </script>
     <script src="assets/js/main.js" defer></script>
 </head>
-<body>
 
-    <button class="theme-toggle" id="theme-btn" aria-label="Toggle color theme" title="Toggle color theme">☀️</button>
+<body id="top">
 
+    <!-- Scroll Progress Hairline -->
+    <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Ambient Parallax Canvas & Matrix Grid Overlay -->
+    <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+    <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+    <!-- Apple-Style Dynamic Island Floating Top Bar -->
+    <header id="dynamic-island" class="dynamic-island">
+        <div class="island-content">
+            <div class="island-left">
+                <a href="#top" class="island-avatar" aria-label="Home">
+                    <span class="avatar-monogram">AR</span>
+                    <span class="status-pulse-dot" title="Available for backend & systems roles"></span>
+                </a>
+                <div class="island-status-group">
+                    <div class="island-status-line">
+                        <span class="pulse-ring"></span>
+                        <span class="status-text">Available</span>
+                    </div>
+                    <span class="island-time" id="island-time">BLR · --:--:--</span>
+                </div>
+            </div>
+
+            <nav class="island-nav" aria-label="Main Navigation">
+                <a href="#about" class="nav-pill" data-nav="about">About</a>
+                <a href="#experience" class="nav-pill" data-nav="experience">Experience</a>
+                <a href="#projects" class="nav-pill" data-nav="projects">Projects</a>
+                <a href="#skills" class="nav-pill" data-nav="skills">Skills</a>
+            </nav>
+
+            <div class="island-right">
+                <button id="sound-btn" class="island-btn" aria-label="Toggle haptic audio clicks"
+                    title="Toggle audio feedback">
+                    <span class="sound-icon">🔇</span>
+                </button>
+                <button id="theme-btn" class="island-btn theme-toggle" aria-label="Toggle color theme"
+                    title="Toggle color theme (T)">
+                    ☀️
+                </button>
+                <button id="cmd-trigger-btn" class="island-cmd-btn" aria-label="Open command palette"
+                    title="Press ⌘K or Ctrl+K">
+                    <kbd>⌘</kbd>K
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
     <div class="container">
-        <header>
-            <div class="terminal-header">anuraag@bengaluru:~$ ./hello.sh</div>
-            <h1>Anuraag <span>G Rao</span></h1>
-            <p class="tagline">Software Engineer based in Bengaluru, India.</p>
 
-            <div class="typewriter">
-                > <span id="typed-text"></span><span class="cursor"></span>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-eyebrow">
+                <span class="terminal-prefix">anuraag@bengaluru:~$</span>
+                <span class="terminal-command">./portfolio --experience=5yr+</span>
             </div>
 
-            <div class="links">
-                <a href="https://github.com/AnuraagGRao" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="mailto:hello@anuraaggrao.com" id="email-link" title="Click to copy email">Email</a>
-                <a href="https://www.linkedin.com/in/anuraag-rao-649662132/" target="_blank" rel="noopener noreferrer" title="LinkedIn profile">LinkedIn</a>
-                <a href="#" aria-disabled="true" title="Resume coming soon">Resume</a>
-            </div>
-        </header>
+            <h1 class="hero-title">
+                Anuraag <span class="shimmer-text">G Rao</span>
+            </h1>
 
-        <section class="fade-in">
-            <h2>About</h2>
-            <div class="project-card">
-                <p class="job-desc">Experienced Software Engineer with 5+ years in backend engineering using Python, Django, and Flask. Skilled at building scalable microservices, optimizing performance, and integrating third‑party APIs. Proficient with CI/CD, AWS/GCP, Docker/Kubernetes, and asynchronous workloads with Celery. Known for fast bug resolution, reliability, and navigating complex codebases effectively.</p>
+            <p class="hero-tagline">
+                Software Engineer & Systems Architect based in <strong>Bengaluru, India</strong>.
+                Designing scalable microservices, resilient IoT time-series pipelines, and high-performance backend
+                infrastructure.
+            </p>
+
+            <!-- Interactive Terminal Prompt Typewriter -->
+            <div class="typewriter-card spotlight-card" id="terminal-box">
+                <div class="terminal-bar">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-label">backend-core.py</span>
+                </div>
+                <div class="typewriter-body">
+                    <span class="prompt-symbol">&gt;</span> <span id="typed-text"></span><span class="cursor"></span>
+                </div>
+            </div>
+
+            <!-- Key Metric Bento Chips -->
+            <div class="hero-metrics-grid">
+                <div class="metric-card spotlight-card">
+                    <div class="metric-value">5+ <span class="metric-unit">Years</span></div>
+                    <div class="metric-label">Backend Engineering & Architecture</div>
+                </div>
+                <div class="metric-card spotlight-card">
+                    <div class="metric-value">40% <span class="metric-unit">Faster</span></div>
+                    <div class="metric-label">p95 Latency & Payroll Processing</div>
+                </div>
+                <div class="metric-card spotlight-card">
+                    <div class="metric-value">36k+ <span class="metric-unit">Items</span></div>
+                    <div class="metric-label">Automated Ingestion & Telemetry</div>
+                </div>
+                <div class="metric-card spotlight-card">
+                    <div class="metric-value">99.95%+ <span class="metric-unit">SLO</span></div>
+                    <div class="metric-label">Production Reliability & Uptime</div>
+                </div>
+            </div>
+
+            <!-- Fast Action Links -->
+            <div class="hero-actions">
+                <a href="mailto:hello@anuraaggrao.com" id="email-link" class="btn-primary magnetic-btn"
+                    title="Click to copy email">
+                    <span>Say Hello</span>
+                    <span class="btn-arrow">↗</span>
+                </a>
+                <a href="#projects" class="btn-secondary magnetic-btn">
+                    <span>Explore Work</span>
+                    <span class="btn-arrow">↓</span>
+                </a>
+                <div class="hero-social-strip">
+                    <a href="https://github.com/AnuraagGRao" target="_blank" rel="noopener noreferrer"
+                        class="social-chip" title="GitHub profile">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/anuraag-rao-649662132/" target="_blank"
+                        rel="noopener noreferrer" class="social-chip" title="LinkedIn profile">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <button class="social-chip resume-trigger" id="resume-btn" title="View resume details">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                        <span>Resume</span>
+                    </button>
+                </div>
             </div>
         </section>
 
-        <section class="fade-in">
-            <h2>01 · Experience</h2>
+        <!-- About Section -->
+        <section id="about" class="section-block fade-in">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>About Me</h2>
+            </div>
+            <div class="bento-about-grid">
+                <div class="bento-card spotlight-card bento-about-main">
+                    <p class="about-lead">
+                        Experienced Software Engineer with <strong>5+ years</strong> specializing in resilient backend
+                        engineering, microservices, and high-throughput data infrastructure using <strong>Python,
+                            Django, Flask, and FastAPI</strong>.
+                    </p>
+                    <p class="job-desc">
+                        Deeply experienced in orchestrating distributed asynchronous workloads with Celery & RabbitMQ,
+                        designing idempotent IoT time-series schemas in TimescaleDB, and hardening containerized cloud
+                        platforms across AWS and GCP. Known for high velocity bug triage, clear engineering
+                        communication, and building systems that hold up under pressure.
+                    </p>
+                </div>
+                <div class="bento-card spotlight-card bento-about-pillars">
+                    <h3 class="card-subtitle">Engineering Principles</h3>
+                    <ul class="pillar-list">
+                        <li>
+                            <span class="pillar-bullet">01</span>
+                            <div>
+                                <strong>Idempotency by Default:</strong> Every API, worker task, and data backfill must
+                                be safe to retry.
+                            </div>
+                        </li>
+                        <li>
+                            <span class="pillar-bullet">02</span>
+                            <div>
+                                <strong>Zero-Guess Observability:</strong> If it isn't monitored with metrics and
+                                traces, it doesn't exist in production.
+                            </div>
+                        </li>
+                        <li>
+                            <span class="pillar-bullet">03</span>
+                            <div>
+                                <strong>Speed with Guardrails:</strong> CI/CD automation that empowers fast shipping
+                                without breaking contracts.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="left">
-                        <img src="assets/img/logos/gamechange-energy.svg" alt="GameChange Energy" class="company-logo" loading="lazy">
-                        <div class="job-title">Software Engineer I <span class="job-company">@ GameChange Energy</span></div>
+        <!-- Experience Section -->
+        <section id="experience" class="section-block fade-in">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Experience</h2>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Job 1: GameChange Energy -->
+                <div class="job-card spotlight-card">
+                    <div class="job-header">
+                        <div class="job-title-row">
+                            <div class="company-badge-wrap">
+                                <img src="assets/img/logos/gamechange-energy.svg" alt="GameChange Energy Logo"
+                                    class="company-logo" loading="lazy">
+                            </div>
+                            <div>
+                                <h3 class="job-role">Software Engineer I</h3>
+                                <span class="job-company">GameChange Energy</span>
+                            </div>
+                        </div>
+                        <div class="job-meta-pill">
+                            <span class="live-pulse"></span>
+                            <span>Live Production</span>
+                        </div>
                     </div>
-                    <div class="job-meta"><span class="live-badge" aria-label="Live system">Live</span></div>
-                </div>
-                <div class="job-desc">GameChange Energy is a global energy infrastructure company delivering high-performance clean energy systems that simplify construction, reduce risk, and operate reliably over decades.</div>
-                <ul class="job-bullets">
-                    <li>Led CI migration from CircleCI to GitHub Actions by consolidating workflows, introducing reusable actions, and caching — improving reliability, speed, and developer visibility.</li>
-                    <li>Expanded the internal tracker system with multiple new commands to streamline operations and diagnostics, adding robust argument parsing, validation, contextual help, and unit coverage.</li>
-                    <li>Engineered IoT data ingestion from raw device telemetry into TimescaleDB, including time‑series schema design, idempotent batch/stream importers, historical backfills, and monitoring for data quality.</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <div class="job-header">
-                    <div class="left">
-                        <img src="assets/img/logos/kredily.svg" alt="Kredily" class="company-logo" loading="lazy">
-                        <div class="job-title">Software Development Engineer II — Python <span class="job-company">@ Kredily</span></div>
+                    <p class="job-desc">
+                        Global clean energy infrastructure company delivering high-performance utility solar tracker
+                        systems operating reliably across decades.
+                    </p>
+                    <ul class="job-bullets">
+                        <li><strong>CI Consolidation:</strong> Led CI migration from CircleCI to GitHub Actions with
+                            reusable workflows, composite actions, and aggressive dependency caching — slashing pipeline
+                            duration and eliminating flaky builds.</li>
+                        <li><strong>Tracker Diagnostics CLI:</strong> Expanded internal diagnostic tracking engine with
+                            modular subcommands, strict parameter validation, contextual help, and end-to-end regression
+                            tests.</li>
+                        <li><strong>IoT Telemetry Ingestion:</strong> Engineered telemetry pipeline ingesting raw device
+                            streams into TimescaleDB with time-series hypertable schemas, idempotent stream consumers,
+                            and monitoring for drift.</li>
+                    </ul>
+                    <div class="job-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TimescaleDB</span>
+                        <span class="tech-tag">IoT Telemetry</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Docker</span>
                     </div>
-                    <div class="job-meta">Feb 2023 – May 2025 · Bengaluru</div>
                 </div>
-                <div class="job-desc">HRMS platform — backend ownership across payroll and platform modules.</div>
-                <ul class="job-bullets">
-                    <li>Refactored core codebase to improve maintainability and performance.</li>
-                    <li>Built batch payroll processing, removing manual steps and improving UX.</li>
-                    <li>Launched Digital Signing, Asset & Roster Management, B2B Insurance, Income Tax updates, and Google reCAPTCHA for Web/Android.</li>
-                    <li>Optimized payroll processing time by 40% with targeted performance work.</li>
-                    <li>Integrated facial recognition (Kredeye) for secure, contactless attendance.</li>
-                    <li>Implemented CI/CD pipelines (Bitbucket Pipelines), reducing deploy time by 80%.</li>
-                    <li>Resolved 2× more Jira tickets than peers; improved reliability and retention.</li>
-                </ul>
-            </div>
 
-            <div class="job">
-                <div class="job-header">
-                    <div class="left">
-                        <img src="assets/img/logos/kredily.svg" alt="Kredily" class="company-logo" loading="lazy">
-                        <div class="job-title">Software Development Engineer I <span class="job-company">@ Kredily</span></div>
+                <!-- Job 2: Kredily SDE II -->
+                <div class="job-card spotlight-card">
+                    <div class="job-header">
+                        <div class="job-title-row">
+                            <div class="company-badge-wrap">
+                                <img src="assets/img/logos/kredily.svg" alt="Kredily Logo" class="company-logo"
+                                    loading="lazy">
+                            </div>
+                            <div>
+                                <h3 class="job-role">Software Development Engineer II</h3>
+                                <span class="job-company">Kredily</span>
+                            </div>
+                        </div>
+                        <div class="job-meta-pill">Feb 2023 – May 2025 · Bengaluru</div>
                     </div>
-                    <div class="job-meta">Feb 2021 – Feb 2023 · Bengaluru</div>
-                </div>
-                <div class="job-desc">Delivered APIs and integrations for Android StaffApp and platform services.</div>
-                <ul class="job-bullets">
-                    <li>Developed backend APIs for StaffApp workflows (employee & manager).</li>
-                    <li>Integrated Karza APIs for InstaCash (salary advance/loan offering).</li>
-                    <li>Integrated IDFC Bank and Billdesk for the Rewards module.</li>
-                    <li>Shipped enhancements and critical fixes across payroll, leave, attendance.</li>
-                    <li>Collaborated with frontend/QA for seamless, regression‑free releases.</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <div class="job-header">
-                    <div class="left">
-                        <img src="assets/img/logos/openly.svg" alt="Openly" class="company-logo" loading="lazy">
-                        <div class="job-title">Backend Developer <span class="job-company">@ Openly</span></div>
+                    <p class="job-desc">
+                        Fast-growing HRMS & Payroll platform — full backend architecture ownership across
+                        high-concurrency payroll engines, compliance, and enterprise integrations.
+                    </p>
+                    <ul class="job-bullets">
+                        <li><strong>Batch Payroll Engine:</strong> Architected automated batch payroll processing
+                            pipeline, eliminating human bottlenecks and accelerating processing time by
+                            <strong>40%</strong>.</li>
+                        <li><strong>Enterprise Feature Delivery:</strong> Shipped Digital Signing, Asset & Roster
+                            Management, B2B Insurance modules, dynamic Income Tax updates, and Google reCAPTCHA across
+                            Web/Android.</li>
+                        <li><strong>Biometric Attendance:</strong> Integrated proprietary facial recognition (Kredeye)
+                            for secure, contactless real-time attendance verification.</li>
+                        <li><strong>CI/CD Acceleration:</strong> Deployed Bitbucket Pipelines reducing release delivery
+                            time by <strong>80%</strong>; resolved 2× more Jira tickets than peers with clean
+                            regression-free code.</li>
+                    </ul>
+                    <div class="job-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Celery</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">AWS</span>
                     </div>
-                    <div class="job-meta">Aug 2019 – Feb 2021 · Bengaluru</div>
                 </div>
-                <div class="job-desc">Startup e‑commerce platform — backend, data warehousing, and DevOps.</div>
-                <ul class="job-bullets">
-                    <li>Designed system/API architecture; accelerated development cycles by 25%.</li>
-                    <li>Built Django backend; improved data retrieval with warehousing.</li>
-                    <li>Integrated payments, Dunzo delivery, real‑time chat, and SMS systems.</li>
-                    <li>Owned DevOps on AWS (EC2, RDS, S3) and contributed to frontend features.</li>
-                </ul>
-            </div>
-        </section>
 
-        <section class="fade-in">
-            <h2>02 · Technical Skills</h2>
-            <div class="skills">
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">Django</span>
-                <span class="skill-pill">Flask</span>
-                <span class="skill-pill">FastAPI</span>
-                <span class="skill-pill">JavaScript</span>
-                <span class="skill-pill">React</span>
-                <span class="skill-pill">Docker</span>
-                <span class="skill-pill">Kubernetes</span>
-                <span class="skill-pill">AWS (EC2, S3, RDS)</span>
-                <span class="skill-pill">GCP (Cloud Run, GCE)</span>
-                <span class="skill-pill">PostgreSQL</span>
-                <span class="skill-pill">MySQL</span>
-                <span class="skill-pill">TimescaleDB</span>
-                <span class="skill-pill">RabbitMQ</span>
-                <span class="skill-pill">Celery</span>
-                <span class="skill-pill">CI/CD (GitHub Actions, Bitbucket)</span>
-                <span class="skill-pill">IoT Telemetry</span>
-                <span class="skill-pill">Data Pipelines (ETL)</span>
-                <span class="skill-pill">REST APIs</span>
-                <span class="skill-pill">Git</span>
-                <span class="skill-pill">Jira</span>
-                <span class="skill-pill">Postman</span>
-                <span class="skill-pill">System Architecture</span>
-                <span class="skill-pill">Raspberry Pi</span>
-            </div>
-        </section>
+                <!-- Job 3: Kredily SDE I -->
+                <div class="job-card spotlight-card">
+                    <div class="job-header">
+                        <div class="job-title-row">
+                            <div class="company-badge-wrap">
+                                <img src="assets/img/logos/kredily.svg" alt="Kredily Logo" class="company-logo"
+                                    loading="lazy">
+                            </div>
+                            <div>
+                                <h3 class="job-role">Software Development Engineer I</h3>
+                                <span class="job-company">Kredily</span>
+                            </div>
+                        </div>
+                        <div class="job-meta-pill">Feb 2021 – Feb 2023 · Bengaluru</div>
+                    </div>
+                    <p class="job-desc">
+                        Engineered backend REST APIs and fintech payment integrations for StaffApp mobile and web users.
+                    </p>
+                    <ul class="job-bullets">
+                        <li>Built high-throughput backend APIs supporting Android StaffApp workflows for employee
+                            onboarding, leave management, and approvals.</li>
+                        <li>Integrated Karza API suite for InstaCash (instant salary advance / micro-lending
+                            verification).</li>
+                        <li>Connected banking gateways including IDFC Bank and Billdesk for company rewards and payout
+                            reconciliation.</li>
+                    </ul>
+                    <div class="job-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django REST</span>
+                        <span class="tech-tag">Fintech APIs</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
 
-        <section class="fade-in">
-            <h2>03 · Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>🕹️ Tetra Overflow Ultra</h3>
-                    <p class="job-desc">Open-source, mobile-first Tetris clone with a custom Zone mechanic (in progress).</p>
-                    <a class="project-link" href="https://tetra.anuraaggrao.com/" target="_blank" rel="noopener noreferrer">Play →</a>
-                </div>
-                <div class="project-card">
-                    <h3>🎬 EpiCountdown</h3>
-                    <p class="job-desc">Live countdown timers for TV shows and anime episodes. Tracks upcoming episodes with real-time updates using TVmaze and Jikan APIs.</p>
-                    <a class="project-link" href="https://countdown.anuraaggrao.com/" target="_blank" rel="noopener noreferrer">Visit →</a>
-                </div>
-                <div class="project-card">
-                    <h3>📊 Status Site</h3>
-                    <p class="job-desc">Animated status page displaying current activity with dynamic scenes and live integrations* (Spotify, GitHub). Built with Next.js and Framer Motion.</p>
-                    <a class="project-link" href="https://status.anuraaggrao.com/" target="_blank" rel="noopener noreferrer">Visit →</a>
-                </div>
-                <div class="project-card">
-                    <h3>🧾 Catalogue & Inventory Tool</h3>
-                    <p class="job-desc">Designed and built a catalogue tool, reducing manual product entry by 70%. Automated scraping and processing of 36k+ FMCG items to improve accuracy.</p>
-                </div>
-                <div class="project-card">
-                    <h3>📊 Campaign Analysis Tool</h3>
-                    <p class="job-desc">Predictive engine to analyze tweets and profile users by political alliance (95% accuracy). Trained neural networks with TensorFlow and built a visual dashboard.</p>
-                </div>
-                <div class="project-card">
-                    <h3>🎓 Generative AI Mastermind</h3>
-                    <p class="job-desc">Technical deep-dives on practical AI/LLM applications and engineering patterns.</p>
-                </div>
-                <div class="project-card">
-                    <h3>🎵 Music Stuff</h3>
-                    <p class="job-desc">Modern mobile-first music player with Firebase integration, Lucide UI components, and Python lyrics service. Built with React + Vite.</p>
-                    <a class="project-link" href="https://music.anuraaggrao.com/" target="_blank" rel="noopener noreferrer">Visit →</a>
-                </div>
-                <div class="project-card">
-                    <h3>🧩 Fidget Toys</h3>
-                    <p class="job-desc">Interactive fidget toy simulations - playable browser-based toys for distraction and relaxation.</p>
-                    <a class="project-link" href="https://fidget.anuraaggrao.com/" target="_blank" rel="noopener noreferrer">Visit →</a>
+                <!-- Job 4: Openly -->
+                <div class="job-card spotlight-card">
+                    <div class="job-header">
+                        <div class="job-title-row">
+                            <div class="company-badge-wrap">
+                                <img src="assets/img/logos/openly.svg" alt="Openly Logo" class="company-logo"
+                                    loading="lazy">
+                            </div>
+                            <div>
+                                <h3 class="job-role">Backend Developer</h3>
+                                <span class="job-company">Openly</span>
+                            </div>
+                        </div>
+                        <div class="job-meta-pill">Aug 2019 – Feb 2021 · Bengaluru</div>
+                    </div>
+                    <p class="job-desc">
+                        E-commerce startup platform — fullstack systems, data warehousing, delivery logistics, and AWS
+                        infrastructure.
+                    </p>
+                    <ul class="job-bullets">
+                        <li>Designed foundational REST architecture, speeding up product release iterations by 25%.</li>
+                        <li>Integrated Dunzo logistics API, payment gateways, and real-time chat/SMS notification
+                            channels.</li>
+                        <li>Managed AWS cloud footprint (EC2, RDS, S3) with automated backup lifecycles and cost
+                            optimization.</li>
+                    </ul>
+                    <div class="job-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">AWS EC2/RDS</span>
+                        <span class="tech-tag">Logistics APIs</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="fade-in">
-            <h2>04 · Education</h2>
-            <div class="job">
-                <div class="job-header">
-                    <div class="job-title">B.E. in Information Science & Engineering <span class="job-company">@ Vemana Institute of Technology</span></div>
-                    <div class="job-meta">June 2019 · CGPA: 7.44</div>
+        <!-- Projects Bento Grid 2.0 Section -->
+        <section id="projects" class="section-block fade-in">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Projects & Systems</h2>
+            </div>
+
+            <!-- Bento Filter Tabs -->
+            <div class="bento-filters" role="tablist" aria-label="Project Categories">
+                <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Works</button>
+                <button class="filter-tab" data-filter="featured" role="tab" aria-selected="false">Featured</button>
+                <button class="filter-tab" data-filter="systems" role="tab" aria-selected="false">Systems & AI</button>
+                <button class="filter-tab" data-filter="interactive" role="tab" aria-selected="false">Interactive &
+                    Games</button>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="bento-grid" id="project-bento-grid">
+
+                <!-- Anchor 1: Tetra Overflow Ultra (2 cols) -->
+                <div class="bento-card spotlight-card bento-col-span-2 project-item"
+                    data-category="interactive featured">
+                    <div class="bento-card-top">
+                        <span class="card-badge-glow">Arcade & Mobile</span>
+                        <a href="https://tetra.anuraaggrao.com/" target="_blank" rel="noopener noreferrer"
+                            class="bento-external-link" title="Play live">
+                            Play Live ↗
+                        </a>
+                    </div>
+                    <h3 class="bento-title">🕹️ Tetra Overflow Ultra</h3>
+                    <p class="bento-desc">
+                        Open-source, mobile-first arcade puzzle engine featuring custom touch drag/flick gestures,
+                        progressive Zodiac level challenges, and a signature time-dilation Zone mechanic.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">Canvas API</span>
+                        <span class="tech-pill">Web Audio</span>
+                        <span class="tech-pill">Touch Physics</span>
+                    </div>
+                </div>
+
+                <!-- Anchor 2: Status Site (2 cols) -->
+                <div class="bento-card spotlight-card bento-col-span-2 project-item" data-category="systems featured">
+                    <div class="bento-card-top">
+                        <span class="card-badge-glow">Real-Time Tracker</span>
+                        <a href="https://status.anuraaggrao.com/" target="_blank" rel="noopener noreferrer"
+                            class="bento-external-link" title="Visit live">
+                            Visit Live ↗
+                        </a>
+                    </div>
+                    <h3 class="bento-title">📊 Dynamic Status Biome Engine</h3>
+                    <p class="bento-desc">
+                        Procedural real-time status dashboard with 6 animated biomes (Cyberpunk Neon Skyline, Alpine
+                        Snow, Sakura, Twilight Meadow) driven by Mulberry32 seeded PRNG, live Spotify playback, and
+                        GitHub events.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">Next.js 15</span>
+                        <span class="tech-pill">Procedural Shaders</span>
+                        <span class="tech-pill">TailwindCSS</span>
+                        <span class="tech-pill">Spotify API</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Project Kei // Neural Chief of Staff -->
+                <div class="bento-card spotlight-card project-item" data-category="systems featured">
+                    <div class="bento-card-top">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="card-badge-glow">AI & Systems</span>
+                            <span class="badge-coming-soon"><span class="pulse-dot"></span>Coming Soon</span>
+                        </div>
+                        <span class="bento-tag-muted">Private Core</span>
+                    </div>
+                    <h3 class="bento-title">✨ Project Kei // Neural Chief of Staff</h3>
+                    <p class="bento-desc">
+                        Personal autonomous AI operator pairing infinite-ceiling Obsidian memory vaults, bidirectional
+                        push-to-talk voice pipeline with Kokoro TTS, and reactive matrix visualizer with silhouette rendering.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">Gemini Flash</span>
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Obsidian</span>
+                        <span class="tech-pill">Kokoro TTS</span>
+                        <span class="tech-pill">WebSockets</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Music Stuff -->
+                <div class="bento-card spotlight-card project-item" data-category="interactive">
+                    <div class="bento-card-top">
+                        <span class="card-badge-glow">Audio Platform</span>
+                        <a href="https://music.anuraaggrao.com/" target="_blank" rel="noopener noreferrer"
+                            class="bento-external-link" title="Visit live">
+                            Visit Live ↗
+                        </a>
+                    </div>
+                    <h3 class="bento-title">🎵 Music Stuff Web Player</h3>
+                    <p class="bento-desc">
+                        Mobile-first personal streaming player with Firebase Storage integration, Lucide audio controls,
+                        lyrics fetch service, and responsive visualizers.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">React + Vite</span>
+                        <span class="tech-pill">Firebase</span>
+                        <span class="tech-pill">Web Audio</span>
+                    </div>
+                </div>
+
+                <!-- Card 5: EpiCountdown -->
+                <div class="bento-card spotlight-card project-item" data-category="interactive">
+                    <div class="bento-card-top">
+                        <span class="card-badge-glow">Consumer Utility</span>
+                        <a href="https://countdown.anuraaggrao.com/" target="_blank" rel="noopener noreferrer"
+                            class="bento-external-link" title="Visit live">
+                            Visit Live ↗
+                        </a>
+                    </div>
+                    <h3 class="bento-title">🎬 EpiCountdown Tracker</h3>
+                    <p class="bento-desc">
+                        Real-time countdown system for TV series and anime releases. Automatically synchronizes release
+                        air dates across TVmaze and Jikan API endpoints.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">TypeScript</span>
+                        <span class="tech-pill">REST APIs</span>
+                        <span class="tech-pill">Local Storage</span>
+                    </div>
+                </div>
+
+                <!-- Card 6: Catalogue & Inventory Tool -->
+                <div class="bento-card spotlight-card project-item" data-category="systems">
+                    <div class="bento-card-top">
+                        <span class="card-badge-glow">Data Automation</span>
+                        <span class="bento-tag-muted">Internal Tool</span>
+                    </div>
+                    <h3 class="bento-title">🧾 FMCG Catalogue Engine</h3>
+                    <p class="bento-desc">
+                        Automated cataloging system reducing manual inventory entry by 70%. Scraped and processed 36k+
+                        FMCG products with image verification and deduplication.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">Python ETL</span>
+                        <span class="tech-pill">BeautifulSoup</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <!-- Card 7: Campaign Analysis Tool -->
+                <div class="bento-card spotlight-card project-item" data-category="systems">
+                    <div class="bento-card-top">
+                        <span class="card-badge-glow">Machine Learning</span>
+                        <span class="bento-tag-muted">ML Research</span>
+                    </div>
+                    <h3 class="bento-title">📊 Political Sentiment Analyzer</h3>
+                    <p class="bento-desc">
+                        Neural predictive model analyzing social media discourse with 95% classification accuracy using
+                        trained TensorFlow embeddings and interactive dashboard.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">TensorFlow</span>
+                        <span class="tech-pill">NLP</span>
+                        <span class="tech-pill">Python</span>
+                    </div>
+                </div>
+
+                <!-- Card 8: Fidget Toys -->
+                <div class="bento-card spotlight-card project-item" data-category="interactive">
+                    <div class="bento-card-top">
+                        <span class="card-badge-glow">Sensory UX</span>
+                        <a href="https://fidget.anuraaggrao.com/" target="_blank" rel="noopener noreferrer"
+                            class="bento-external-link" title="Play live">
+                            Play Live ↗
+                        </a>
+                    </div>
+                    <h3 class="bento-title">🧩 Interactive Fidget Suite</h3>
+                    <p class="bento-desc">
+                        Playable tactile sensory simulations with spring physics, bubble wrap pops, and haptic audio
+                        responses crafted for focus and micro-breaks.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">HTML5 Canvas</span>
+                        <span class="tech-pill">Physics Math</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technical Skills Matrix -->
+        <section id="skills" class="section-block fade-in">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Technical Arsenal</h2>
+            </div>
+
+            <div class="skills-matrix-grid">
+                <div class="skills-group-card spotlight-card">
+                    <div class="skills-group-header">
+                        <span class="skills-group-icon">🐍</span>
+                        <h3 class="skills-group-title">Languages & Backends</h3>
+                    </div>
+                    <div class="skills-chips">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">FastAPI</span>
+                        <span class="skill-pill">Django & DRF</span>
+                        <span class="skill-pill">Flask</span>
+                        <span class="skill-pill">JavaScript / ES6+</span>
+                        <span class="skill-pill">TypeScript</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">Bash / Shell</span>
+                    </div>
+                </div>
+
+                <div class="skills-group-card spotlight-card">
+                    <div class="skills-group-header">
+                        <span class="skills-group-icon">🗄️</span>
+                        <h3 class="skills-group-title">Databases & Streaming</h3>
+                    </div>
+                    <div class="skills-chips">
+                        <span class="skill-pill">PostgreSQL</span>
+                        <span class="skill-pill">TimescaleDB (IoT)</span>
+                        <span class="skill-pill">MySQL</span>
+                        <span class="skill-pill">Redis</span>
+                        <span class="skill-pill">RabbitMQ</span>
+                        <span class="skill-pill">Celery Workers</span>
+                        <span class="skill-pill">Firebase Firestore</span>
+                    </div>
+                </div>
+
+                <div class="skills-group-card spotlight-card">
+                    <div class="skills-group-header">
+                        <span class="skills-group-icon">☁️</span>
+                        <h3 class="skills-group-title">Cloud, DevOps & Infra</h3>
+                    </div>
+                    <div class="skills-chips">
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">Kubernetes</span>
+                        <span class="skill-pill">AWS (EC2, S3, RDS, IAM)</span>
+                        <span class="skill-pill">GCP (Cloud Run, GCE)</span>
+                        <span class="skill-pill">GitHub Actions CI/CD</span>
+                        <span class="skill-pill">Bitbucket Pipelines</span>
+                        <span class="skill-pill">Raspberry Pi</span>
+                    </div>
+                </div>
+
+                <div class="skills-group-card spotlight-card">
+                    <div class="skills-group-header">
+                        <span class="skills-group-icon">⚡</span>
+                        <h3 class="skills-group-title">Architecture & AI</h3>
+                    </div>
+                    <div class="skills-chips">
+                        <span class="skill-pill">Microservices Design</span>
+                        <span class="skill-pill">RESTful API Design</span>
+                        <span class="skill-pill">Idempotent Pipelines</span>
+                        <span class="skill-pill">Google Gemini API</span>
+                        <span class="skill-pill">Antigravity SDK</span>
+                        <span class="skill-pill">Obsidian Vaults</span>
+                        <span class="skill-pill">System Optimization</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="fade-in">
-            <h2>05 · Achievements</h2>
-            <div class="project-card">
-                <ul class="job-bullets">
-                    <li>Modernized CI (CircleCI → GitHub Actions) with reusable workflows, caching, and matrix builds — ~60% faster pipelines and far fewer flaky runs.</li>
-                    <li>Improved p95 API latency by ~40% via query tuning, targeted indexing, async workloads, and strategic caching.</li>
-                    <li>Reduced cloud spend by ~30% through container right‑sizing, autoscaling, and lifecycle policies without sacrificing reliability.</li>
-                    <li>Raised operational reliability to 99.95%+ by introducing SLOs, actionable alerting, Grafana dashboards, and on‑call runbooks.</li>
-                    <li>Hardened security posture with secret management, SSO, and least‑privilege IAM; contributed to a clean third‑party audit.</li>
-                </ul>
+        <!-- Education & Achievements -->
+        <section id="education" class="section-block fade-in">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Education & Highlights</h2>
+            </div>
+
+            <div class="bento-split-grid">
+                <!-- Education -->
+                <div class="bento-card spotlight-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-role">B.E. in Information Science & Engineering</h3>
+                            <span class="job-company">Vemana Institute of Technology</span>
+                        </div>
+                        <div class="job-meta-pill">June 2019 · CGPA: 7.44</div>
+                    </div>
+                    <p class="job-desc">
+                        Core foundation in distributed systems, database management, algorithms, and computer networks.
+                        Active builder throughout undergraduate labs.
+                    </p>
+                </div>
+
+                <!-- Achievements Highlights -->
+                <div class="bento-card spotlight-card">
+                    <h3 class="card-subtitle">Key Engineering Achievements</h3>
+                    <ul class="achievement-bullets">
+                        <li><strong>CI Overhaul:</strong> Accelerated deployment velocity by ~60% through unified GitHub
+                            Actions matrices and cross-step caching.</li>
+                        <li><strong>Latency Optimization:</strong> Drove 40% reduction in p95 query latency via indexed
+                            hypertable queries and read-replica routing.</li>
+                        <li><strong>Cost Efficiency:</strong> Trimmed ~30% off monthly cloud spend by eliminating orphan
+                            container allocations and tuning worker autoscale limits.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section class="fade-in">
-            <h2>06 · Interests</h2>
-            <div class="project-card">
-                <p class="job-desc">Mentoring junior developers, knowledge sharing, gaming and live streaming, and exploring game mechanics.</p>
+        <!-- Did You Know? Card -->
+        <section id="facts" class="section-block fade-in">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Did You Know?</h2>
+            </div>
+            <div class="widget-card spotlight-card">
+                <div class="widget-content">
+                    <div class="fact-tag">Curated Trivia</div>
+                    <p id="fact-text" class="fact-statement">Loading a fact…</p>
+                </div>
+                <button class="widget-refresh" id="fact-refresh" title="Show another fact"
+                    aria-label="Load another fact">
+                    <span class="refresh-icon">↺</span>
+                    <span class="refresh-label">Next Fact</span>
+                </button>
             </div>
         </section>
 
-        <section class="fade-in">
-            <h2>07 · Did You Know?</h2>
-            <div class="widget-card">
-                <p id="fact-text" class="job-desc">Loading a random fact…</p>
-                <button class="widget-refresh" id="fact-refresh" title="New fact" aria-label="Load new fact">↺</button>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <div class="footer-monogram">Anuraag G Rao</div>
+                    <p class="footer-sub">Engineered with vanilla standards, smooth motion, and zero frameworks.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#top" class="footer-link">Back to Top ↑</a>
+                    <a href="https://github.com/AnuraagGRao" target="_blank" rel="noopener noreferrer"
+                        class="footer-link">GitHub</a>
+                    <a href="https://www.linkedin.com/in/anuraag-rao-649662132/" target="_blank"
+                        rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+                    <a href="mailto:hello@anuraaggrao.com" class="footer-link">Email</a>
+                </div>
             </div>
-        </section>
-
-        <footer>
-            Building robust systems in Bengaluru, India.
+            <div class="footer-bottom">
+                <span>© 2026 Anuraag G Rao · Bengaluru, India. All rights reserved.</span>
+            </div>
         </footer>
+
+    </div>
+
+    <!-- Apple-Style Bottom Floating Dock -->
+    <nav id="dock-nav" class="dock-nav" aria-label="Quick Access Dock">
+        <div class="dock-capsule">
+            <a href="#about" class="dock-item" data-tooltip="About">
+                <span class="dock-icon">👤</span>
+            </a>
+            <a href="#experience" class="dock-item" data-tooltip="Experience">
+                <span class="dock-icon">💼</span>
+            </a>
+            <a href="#projects" class="dock-item" data-tooltip="Projects">
+                <span class="dock-icon">🚀</span>
+            </a>
+            <a href="#skills" class="dock-item" data-tooltip="Skills">
+                <span class="dock-icon">⚡</span>
+            </a>
+            <span class="dock-separator" aria-hidden="true"></span>
+            <button id="dock-cmd-btn" class="dock-item dock-cmd-trigger" data-tooltip="Command Palette (⌘K)">
+                <span class="dock-icon">⌘</span>
+            </button>
+            <a href="mailto:hello@anuraaggrao.com" class="dock-item" data-tooltip="Send Email">
+                <span class="dock-icon">✉️</span>
+            </a>
+            <a href="#top" class="dock-item" data-tooltip="Scroll to Top">
+                <span class="dock-icon">↑</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Interactive Command Palette Modal (⌘K / Ctrl+K) -->
+    <div id="cmd-palette-modal" class="cmd-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="cmd-backdrop" id="cmd-backdrop"></div>
+        <div class="cmd-container spotlight-card">
+            <div class="cmd-search-wrap">
+                <span class="cmd-search-icon">🔍</span>
+                <input type="text" id="cmd-input" class="cmd-input" placeholder="Type a command or search sections..."
+                    autocomplete="off" spellcheck="false">
+                <kbd class="cmd-esc-badge" id="cmd-close-btn">ESC</kbd>
+            </div>
+            <div class="cmd-results" id="cmd-results-list" role="listbox">
+                <!-- Dynamically populated or static items -->
+                <div class="cmd-group-label">Quick Navigation</div>
+                <div class="cmd-item" data-action="nav" data-target="#projects" role="option">
+                    <span class="cmd-item-icon">🚀</span>
+                    <span class="cmd-item-text">Jump to Projects & Systems</span>
+                    <kbd>P</kbd>
+                </div>
+                <div class="cmd-item" data-action="nav" data-target="#experience" role="option">
+                    <span class="cmd-item-icon">💼</span>
+                    <span class="cmd-item-text">Jump to Work Experience</span>
+                    <kbd>E</kbd>
+                </div>
+                <div class="cmd-item" data-action="nav" data-target="#skills" role="option">
+                    <span class="cmd-item-icon">⚡</span>
+                    <span class="cmd-item-text">Jump to Skills Matrix</span>
+                    <kbd>S</kbd>
+                </div>
+                <div class="cmd-item" data-action="nav" data-target="#about" role="option">
+                    <span class="cmd-item-icon">👤</span>
+                    <span class="cmd-item-text">Jump to About</span>
+                    <kbd>A</kbd>
+                </div>
+
+                <div class="cmd-group-label">Actions</div>
+                <div class="cmd-item" data-action="copy-email" role="option">
+                    <span class="cmd-item-icon">📋</span>
+                    <span class="cmd-item-text">Copy Email Address (hello@anuraaggrao.com)</span>
+                    <kbd>C</kbd>
+                </div>
+                <div class="cmd-item" data-action="toggle-theme" role="option">
+                    <span class="cmd-item-icon">🌗</span>
+                    <span class="cmd-item-text">Toggle Theme (Light / Dark)</span>
+                    <kbd>T</kbd>
+                </div>
+                <div class="cmd-item" data-action="toggle-sound" role="option">
+                    <span class="cmd-item-icon">🔊</span>
+                    <span class="cmd-item-text">Toggle Audio Clicks Haptics</span>
+                    <kbd>M</kbd>
+                </div>
+                <div class="cmd-item" data-action="open-link" data-url="https://github.com/AnuraagGRao" role="option">
+                    <span class="cmd-item-icon">🐙</span>
+                    <span class="cmd-item-text">Open GitHub Profile</span>
+                    <kbd>G</kbd>
+                </div>
+                <div class="cmd-item" data-action="open-link"
+                    data-url="https://www.linkedin.com/in/anuraag-rao-649662132/" role="option">
+                    <span class="cmd-item-icon">👔</span>
+                    <span class="cmd-item-text">Open LinkedIn Profile</span>
+                    <kbd>L</kbd>
+                </div>
+            </div>
+            <div class="cmd-footer">
+                <span>Use <kbd>↑</kbd> <kbd>↓</kbd> to navigate</span>
+                <span><kbd>↵</kbd> to select</span>
+                <span><kbd>ESC</kbd> to close</span>
+            </div>
+        </div>
     </div>
 
 </body>
+
 </html>
