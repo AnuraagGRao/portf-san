@@ -554,7 +554,7 @@
 
         function openPalette() {
             playHapticSound(900, "triangle");
-            modal.classList.add("open");
+            modal.classList.add("active", "open");
             modal.setAttribute("aria-hidden", "false");
             input.value = "";
             filterCommands("");
@@ -566,7 +566,7 @@
 
         function closePalette() {
             playHapticSound(600, "sine");
-            modal.classList.remove("open");
+            modal.classList.remove("active", "open");
             modal.setAttribute("aria-hidden", "true");
         }
 
@@ -627,9 +627,16 @@
             }
         }
 
-        // Event Listeners
-        if (triggerBtn) triggerBtn.addEventListener("click", openPalette);
-        if (dockTriggerBtn) dockTriggerBtn.addEventListener("click", openPalette);
+        // Event Listeners for all Command Palette triggers
+        const allCmdTriggers = document.querySelectorAll(
+            "#dock-cmd-btn, #island-cmd-trigger, #cmd-trigger-btn, .dock-cmd-trigger, .island-cmd-btn"
+        );
+        allCmdTriggers.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                openPalette();
+            });
+        });
         if (backdrop) backdrop.addEventListener("click", closePalette);
         if (closeBtn) closeBtn.addEventListener("click", closePalette);
 
@@ -796,14 +803,17 @@
             soundBtn.addEventListener("click", toggleSound);
         }
 
-        // Email copy triggers
-        const emailLinks = document.querySelectorAll(".email-copy-trigger, a[href^='mailto:']");
+        // Email copy & send triggers
+        const emailLinks = document.querySelectorAll(
+            "#dock-email-btn, #email-link, .email-copy-trigger, .email-trigger, a[href^='mailto:']"
+        );
         emailLinks.forEach(link => {
             link.addEventListener("click", (e) => {
-                if (link.getAttribute("href") === `mailto:${EMAIL}`) {
-                    // Let default mailto trigger or optionally copy
-                    playHapticSound(800, "sine");
-                }
+                e.preventDefault();
+                copyEmailToClipboard();
+                setTimeout(() => {
+                    window.location.href = `mailto:${EMAIL}`;
+                }, 200);
             });
         });
     });

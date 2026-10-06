@@ -1305,7 +1305,8 @@ body {
     transition: opacity var(--duration-fast) ease;
 }
 
-.cmd-modal.active {
+.cmd-modal.active,
+.cmd-modal.open {
     opacity: 1;
     pointer-events: auto;
 }
@@ -1332,7 +1333,8 @@ body {
     z-index: 2;
 }
 
-.cmd-modal.active .cmd-container {
+.cmd-modal.active .cmd-container,
+.cmd-modal.open .cmd-container {
     transform: scale(1) translateY(0);
 }
 
