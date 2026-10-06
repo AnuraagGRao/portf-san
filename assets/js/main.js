@@ -118,33 +118,45 @@
     }
 
     // -------------------------------------------------------------
-    // Theme Switcher (Dark / Light)
+    // Theme Switcher (Obsidian / Cyber / Arcade)
     // -------------------------------------------------------------
+    const THEMES = ["obsidian", "cyber", "arcade"];
+    const THEME_NAMES = {
+        obsidian: { icon: "🖤", name: "Obsidian Precision", desc: "Linear / Raycast Noir" },
+        cyber: { icon: "⚡", name: "Cyber Luminescence", desc: "Neon Glassmorphism" },
+        arcade: { icon: "🕹️", name: "Neo-Brutalist Arcade", desc: "Tactile Retro Grid" },
+    };
+
     function getInitialMode() {
-        const stored = localStorage.getItem("theme-mode");
-        if (stored === "dark" || stored === "light") return stored;
-        return (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
+        const stored = localStorage.getItem("user-theme") || localStorage.getItem("theme-mode");
+        if (stored && THEMES.includes(stored)) return stored;
+        return "obsidian";
     }
 
     function setTheme(mode) {
+        if (!THEMES.includes(mode)) mode = "obsidian";
         const html = document.documentElement;
-        html.setAttribute("data-mode", mode);
-        localStorage.setItem("theme-mode", mode);
+        html.setAttribute("data-theme", mode);
+        html.setAttribute("data-mode", "dark");
+        localStorage.setItem("user-theme", mode);
+        localStorage.setItem("theme-mode", "dark");
+        const meta = THEME_NAMES[mode] || THEME_NAMES.obsidian;
         const btn = document.getElementById("theme-btn");
         if (btn) {
-            const isDark = mode === "dark";
-            btn.textContent = isDark ? "☀️" : "🌙";
-            btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-            btn.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+            btn.textContent = meta.icon;
+            btn.setAttribute("aria-label", `Switch theme (Current: ${meta.name})`);
+            btn.setAttribute("title", `Theme: ${meta.name} [T to cycle]`);
         }
     }
 
     function toggleTheme() {
         playHapticSound(600, "sine");
-        const current = document.documentElement.getAttribute("data-mode") || getInitialMode();
-        const next = current === "dark" ? "light" : "dark";
+        const current = document.documentElement.getAttribute("data-theme") || getInitialMode();
+        const currentIndex = THEMES.indexOf(current);
+        const next = THEMES[(currentIndex + 1) % THEMES.length];
         setTheme(next);
-        showToast(`Theme: ${next === "dark" ? "Dark Mode" : "Light Mode"}`);
+        const meta = THEME_NAMES[next];
+        showToast(`${meta.icon} ${meta.name}`);
     }
 
     // -------------------------------------------------------------

@@ -8,33 +8,34 @@
 /* ==========================================================================
    1. DESIGN TOKENS (CSS Variables)
    ========================================================================== */
-:root {
-    /* --- Dark Mode Base (Default) --- */
-    --background: #08090D;
-    --background-subtle: #0D0F14;
-    --surface: #12141C;
-    --surface-hover: #191C26;
-    --surface-active: #202432;
-    --surface-glass: rgba(18, 20, 28, 0.72);
-    --surface-glass-border: rgba(255, 255, 255, 0.08);
+:root,
+[data-theme="obsidian"] {
+    /* --- Theme 1: Obsidian Precision (Linear / Raycast / Vercel) --- */
+    --background: #010102;
+    --background-subtle: #08090C;
+    --surface: #0E1015;
+    --surface-hover: #141720;
+    --surface-active: #1B1E29;
+    --surface-glass: rgba(14, 16, 21, 0.85);
+    --surface-glass-border: rgba(255, 255, 255, 0.07);
 
-    --border: #1E222D;
-    --border-subtle: #171922;
-    --border-strong: #2F3546;
-    --border-glow: rgba(99, 102, 241, 0.35);
+    --border: #23252A;
+    --border-subtle: #18191D;
+    --border-strong: #34343A;
+    --border-glow: rgba(94, 106, 210, 0.35);
 
-    --text: #F1F3F7;
-    --text-muted: #959CA6;
-    --text-subtle: #616875;
+    --text: #F7F8F8;
+    --text-muted: #8A8F98;
+    --text-subtle: #62666D;
 
     /* --- Accent Colors --- */
-    --accent-primary: #6366F1;       /* Electric Indigo */
-    --accent-secondary: #38BDF8;     /* Sky Cyan */
-    --accent-emerald: #10B981;       /* Mint Emerald */
-    --accent-amber: #F59E0B;         /* Amber */
+    --accent-primary: #5E6AD2;       /* Linear Lavender */
+    --accent-secondary: #57C1FF;     /* Raycast Cyan */
+    --accent-emerald: #27A644;       /* Linear Green */
+    --accent-amber: #FFC533;         /* Raycast Amber */
 
-    --accent-gradient: linear-gradient(135deg, #6366F1 0%, #38BDF8 50%, #10B981 100%);
-    --accent-glow: rgba(99, 102, 241, 0.16);
+    --accent-gradient: linear-gradient(135deg, #5E6AD2 0%, #57C1FF 50%, #27A644 100%);
+    --accent-glow: rgba(94, 106, 210, 0.2);
 
     /* --- Typography Tokens --- */
     --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -50,19 +51,19 @@
 
     /* --- Elevations & Glass --- */
     --glass-blur: blur(20px) saturate(190%);
-    --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
     --shadow-raised: 
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 10px 30px -5px rgba(0, 0, 0, 0.6);
+        0 10px 30px -5px rgba(0, 0, 0, 0.7);
     --shadow-floating: 
         inset 0 1px 0 rgba(255, 255, 255, 0.12),
-        0 18px 45px -8px rgba(0, 0, 0, 0.7);
+        0 18px 45px -8px rgba(0, 0, 0, 0.8);
 
     /* --- Spacings & Shapes --- */
     --radius-pill: 9999px;
-    --radius-card: 20px;
-    --radius-card-sm: 14px;
-    --radius-btn: 10px;
+    --radius-card: 18px;
+    --radius-card-sm: 12px;
+    --radius-btn: 8px;
 
     --space-page: clamp(1.25rem, 4vw, 3rem);
     --space-section: clamp(3.5rem, 7vw, 6rem);
@@ -72,6 +73,97 @@
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     --duration-fast: 160ms;
     --duration-norm: 280ms;
+}
+
+/* --- Theme 2: Cybernetic Luminescence (ElevenLabs / Superhuman / RunwayML) --- */
+[data-theme="cyber"] {
+    --background: #08090E;
+    --background-subtle: #0E101A;
+    --surface: #131726;
+    --surface-hover: #1A2035;
+    --surface-active: #232C47;
+    --surface-glass: rgba(19, 23, 38, 0.65);
+    --surface-glass-border: rgba(139, 92, 246, 0.25);
+
+    --border: rgba(139, 92, 246, 0.2);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(139, 92, 246, 0.45);
+    --border-glow: rgba(139, 92, 246, 0.55);
+
+    --text: #F8FAFC;
+    --text-muted: #A5B4FC;
+    --text-subtle: #6366F1;
+
+    --accent-primary: #8B5CF6;       /* Electric Violet */
+    --accent-secondary: #06B6D4;     /* Cyber Cyan */
+    --accent-emerald: #10B981;       /* Cyber Emerald */
+    --accent-amber: #F59E0B;         /* Radiant Amber */
+
+    --accent-gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #06B6D4 100%);
+    --accent-glow: rgba(139, 92, 246, 0.35);
+
+    --radius-card: 24px;
+    --radius-card-sm: 16px;
+    --radius-btn: 12px;
+}
+
+/* --- Theme 3: Neo-Brutalist Arcade (Nintendo-2001 / Lovable / Figma) --- */
+[data-theme="arcade"] {
+    --background: #0D0E15;
+    --background-subtle: #141622;
+    --surface: #181A28;
+    --surface-hover: #212538;
+    --surface-active: #2A2F48;
+    --surface-glass: rgba(24, 26, 40, 0.95);
+    --surface-glass-border: #2A2E44;
+
+    --border: #2A2E44;
+    --border-subtle: #1E2130;
+    --border-strong: #00FF66;
+    --border-glow: rgba(0, 255, 102, 0.45);
+
+    --text: #FFFFFF;
+    --text-muted: #A0A8C0;
+    --text-subtle: #68708C;
+
+    --accent-primary: #00FF66;       /* Acid Green */
+    --accent-secondary: #FFE600;     /* Cyber Yellow */
+    --accent-emerald: #00E5FF;       /* Bright Cyan */
+    --accent-amber: #FF4365;         /* Hot Coral */
+
+    --accent-gradient: linear-gradient(135deg, #00FF66 0%, #FFE600 50%, #FF4365 100%);
+    --accent-glow: rgba(0, 255, 102, 0.3);
+
+    --radius-card: 14px;
+    --radius-card-sm: 8px;
+    --radius-btn: 6px;
+}
+
+/* Specific theme visual flourishes */
+[data-theme="arcade"] body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+[data-theme="arcade"] .bento-card,
+[data-theme="arcade"] .spotlight-card {
+    border-width: 2px !important;
+    border-color: var(--border) !important;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="arcade"] .bento-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--accent-primary) !important;
+}
+
+[data-theme="cyber"] .bento-card {
+    box-shadow: 0 0 30px -8px rgba(139, 92, 246, 0.18);
 }
 
 /* --- Light Mode Palette --- */
