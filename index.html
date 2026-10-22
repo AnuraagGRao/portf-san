@@ -546,6 +546,35 @@
                     </div>
                 </div>
 
+                <!-- Anchor: Dual & Multi Audio Mirror (2 cols) -->
+                <div class="bento-card spotlight-card bento-col-span-2 project-item" data-category="systems featured">
+                    <div class="bento-card-top">
+                        <span class="card-badge-glow">🎧 Real-Time Audio DSP &amp; WASAPI</span>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                            <a href="https://github.com/AnuraagGRao/dual-audio-mirror" target="_blank"
+                                rel="noopener noreferrer" class="bento-external-link" title="GitHub repository">
+                                GitHub ↗
+                            </a>
+                            <a href="https://github.com/AnuraagGRao/dual-audio-mirror/releases/tag/v1.2.0" target="_blank" rel="noopener noreferrer"
+                                class="bento-external-link" title="Download v1.2.0 Universal DMG & Binaries">
+                                ⚡ v1.2.0 Releases ↗
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="bento-title">⚡ Dual &amp; Multi Audio Mirror // Real-Time Synchronizer</h3>
+                    <p class="bento-desc">
+                        Zero-bloat multi-output audio router duplicating audio across 2, 3, 4, 5+ headphones and speakers with near-zero latency (&lt;10-15ms). Native pure WASAPI standalone on Windows (&lt;250 KB) and Rust + egui + cpal on macOS &amp; Linux. Features real-time 60 FPS LED stereo VU meters, single-instance mutex &amp; Unix socket IPC focus-wakeup, and Universal Apple Silicon + Intel DMG installer.
+                    </p>
+                    <div class="bento-meta-row">
+                        <span class="tech-pill">Rust</span>
+                        <span class="tech-pill">C# / WASAPI</span>
+                        <span class="tech-pill">CoreAudio &amp; PipeWire</span>
+                        <span class="tech-pill">egui UI</span>
+                        <span class="tech-pill">Lock-Free Ringbuffers</span>
+                        <span class="tech-pill">Universal macOS DMG</span>
+                    </div>
+                </div>
+
                 <!-- Anchor 2: Status Site (2 cols) -->
                 <div class="bento-card spotlight-card bento-col-span-2 project-item" data-category="systems featured">
                     <div class="bento-card-top">
@@ -678,18 +707,14 @@
                             </a>
                         </div>
                     </div>
-                    <h3 class="bento-title">⚡ VoltWatch // Battery Telemetry</h3>
+                    <h3 class="bento-title">⚡ VoltWatch // Battery Telemetry &amp; Edge D1</h3>
                     <p class="bento-desc">
-                        Real-time mobile battery health, discharge analytics, and charging intelligence suite. Features
-                        multi-user
-                        Google & Firebase authentication, automated Android webhook ingestion, resilient SQLite
-                        time-series storage,
-                        and live telemetry dashboards.
+                        Real-time mobile battery health, discharge analytics, and charging intelligence suite. Features multi-user Google &amp; Firebase authentication, automated Android webhook ingestion, Cloudflare Workers + D1 serverless edge database migration, and live telemetry dashboards with time-series scrolling.
                     </p>
                     <div class="bento-meta-row">
+                        <span class="tech-pill">Cloudflare D1</span>
+                        <span class="tech-pill">Workers</span>
                         <span class="tech-pill">Node.js</span>
-                        <span class="tech-pill">Express</span>
-                        <span class="tech-pill">SQLite</span>
                         <span class="tech-pill">Firebase Auth</span>
                         <span class="tech-pill">Chart.js</span>
                         <span class="tech-pill">Docker</span>
@@ -1106,6 +1131,11 @@
                     <span class="cmd-item-icon">🔊</span>
                     <span class="cmd-item-text">Toggle Audio Clicks Haptics</span>
                     <kbd>M</kbd>
+                </div>
+                <div class="cmd-item" data-action="open-link" data-url="https://github.com/AnuraagGRao/dual-audio-mirror" role="option">
+                    <span class="cmd-item-icon">🎧</span>
+                    <span class="cmd-item-text">Open Dual Audio Mirror (Multi-Endpoint Sync &amp; Releases)</span>
+                    <kbd>D</kbd>
                 </div>
                 <div class="cmd-item" data-action="open-link" data-url="https://arcade.anuraaggrao.com" role="option">
                     <span class="cmd-item-icon">🕹️</span>
